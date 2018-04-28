@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,Button, } from 'react-native';
+import { StyleSheet, Text, View,Button,CheckBox, } from 'react-native';
 
 
 const TaskList=[{
@@ -65,7 +65,8 @@ const TaskList=[{
 export default class App extends React.Component {
 
   state ={
-    TaskListIndex:0
+    TaskListIndex:0,
+    checked: false
   }
 
   //Write a function to move to the next task using the Button
@@ -80,13 +81,32 @@ export default class App extends React.Component {
         TaskListIndex: TaskListIndex +1
       
       });
+
+
     } else{
       this.setState({
         TaskListIndex: 0
       });
-    }
     
+    } 
+
+  // ToDo Fix CheckBox
+    //CheckBox does not show the alert message
+   /* checkBox=()=> {     
+
+    const {checked}  =this.value.state;
+    if(checked== this.state.checked){
+      this.setState({
+      checked: alert("You checked")
+      });
+    }else {
+      this.setState({
+        checked: alert("You unchecked")
+      });
+    }}
+    */
   }
+  
 
 
 
@@ -98,6 +118,7 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
+      <CheckBox value={this.state.checked} onValueChange={this.checkBox}/>
        <Text style={styles.title}> {TaskLists.title} </Text>
        <Text style={styles.desc}>{TaskLists.description}</Text>
 
