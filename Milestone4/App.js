@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     fontWeight:"800",
     fontSize:24,
     fontFamily:'sans-serif-condensed',
+    color:'#db236f',
 
   },
 
