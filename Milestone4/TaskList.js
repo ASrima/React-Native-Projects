@@ -1,5 +1,5 @@
 import React from 'react'; // -*- js-jsx -*-
-import { Button, FlatList, Text, View } from 'react-native';
+import { StyleSheet,Button, FlatList, Text, View,ScrollView,TouchableOpacity, } from 'react-native';
 import TaskItem from './TaskItem'
 
 function randomDay(y, m) {
@@ -132,32 +132,70 @@ export default class TaskList extends React.Component {
       })
   }
 
-  render() {
+  render() {  
+    
+    //ToDo
+    
+    //ScrollView doesn't work
+    //sorting by Description, Priority and Date
     return (
-      <View style={{paddingTop:20}}>
-          <Button
+      <View style={{paddingTop:15,}}>
+      <View style={{padding:2,backgroundColor:'steelblue',borderColor:'#d9dcdd', borderWidth:2,}}>
+          <TouchableOpacity
             onPress={() => this.sortItems()}
-            title="Sort by description"/>
-                      <Button
+           // title="Sort by description"
+           >
+
+            <Text style={styles.priority}>SORT BY DESCRIPTION</Text>
+            </TouchableOpacity>
+
+
+       </View>
+            <View style={{padding:2,backgroundColor:'steelblue',borderColor:'#d9dcdd', borderWidth:2,}}>
+                      <TouchableOpacity
                         onPress={() => this.sortByPriority()}
-                        title="Sort by priority"/>
-
-
-                        <Button 
+                        //title="Sort by priority"
+                        >
+                        
+                        <Text style={styles.priority}> SORT BY PRIORITY</Text>
+                        </TouchableOpacity>
+             </View>
+                  <View style={{padding:2,backgroundColor:'steelblue', borderColor:'#d9dcdd', borderWidth:2,}}>
+                      <TouchableOpacity
                           onPress={( ) =>this.sortByDate()}
 
-                          title="Sort by Date"   />
-        
+                         // title="Sort by Date"   
+                         >
 
+                          <Text style={styles.priority}> SORT BY DATE</Text>
 
+                          </TouchableOpacity>
+                    </View>
+
+   <ScrollView>
 
         <FlatList
           style={{}}
           data={this.state.taskList}
           renderItem={item => this.renderItem(item)}
           />
-          
+        </ScrollView>  
       </View>
     )
   }
 }
+
+
+const styles = StyleSheet.create({
+  priority: {
+    //height:20,
+    //width:50,
+   // backgroundColor:'white',
+    fontWeight:'bold',
+    color:'#fff',
+    textAlign:'center',
+    fontSize:16,
+    marginBottom:10
+   // borderColor:"red"
+  },
+})
