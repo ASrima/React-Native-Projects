@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight, ListView, StyleSheet, TextInput, ScrollView, TouchableOpacity, CheckBox,Picker,} from 'react-native';
-
+import TaskItem from './app/component/TaskItem';
 export default class Note extends React.Component  {
     constructor(){
         super();
@@ -14,7 +14,7 @@ export default class Note extends React.Component  {
                 check: !this.state.check 
                 //write a method to alert when box is uncheck
             })
-            alert("You are about to check the task as done!")
+            alert("You are about to check the task as done!" + this.state.check)
         
     }
 
@@ -32,9 +32,15 @@ export default class Note extends React.Component  {
       <Text style={styles.noteText}> {this.props.val.date} </Text>
       <Text style={styles.noteText}>{this.props.val.note}</Text>
       <Text style={styles.noteText}>{this.props.val.desc}</Text>
+      <Text>DUE NOW</Text>
       <TouchableHighlight onPress={() => this.changePriority()}>
           <Text style={styles.noteText}>Priority {this.state.priority}</Text>
      </TouchableHighlight>
+     <View style={styles.ok}>
+        <Text >........{this.state.priority}: {this.props.description}
+           {due}.......
+        </Text>
+        </View>
      <View style={styles.picker}>
      <Picker 
      style={{width:'80%'}}
@@ -82,6 +88,7 @@ const styles = StyleSheet.create({
         top:20,
         //bottom: 10,
         //right: 10,
+        margin:20,
     },
     noteDeleteText:{
         color:'white',

@@ -16,8 +16,8 @@ export default class TaskItem extends React.Component {
     }
     return (
         <View style={styles.ok}>
-        <Text >{this.state.priority}: {this.props.description}
-           {due}
+        <Text >........{this.state.priority}: {this.props.description}
+           {due}.......
         </Text>
         </View>
     );
